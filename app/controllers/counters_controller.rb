@@ -4,15 +4,15 @@ class CountersController < ApplicationController
   def index
   end
 
+  def admin
+    @counter = Counter.first_or_create
+  end
+
   def increment
     counter = Counter.first_or_create
     counter.increment!(:value)
 
     redirect_to admin_path
-  end
-
-  def admin
-    @counter = Counter.first_or_create
   end
 
   def modify
