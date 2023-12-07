@@ -1,0 +1,18 @@
+<div class="flex flex-col gap-5">
+  <h1 class="text-2xl font-bold">
+    Hello Admin! This is the /admin page
+  </h1>
+
+  <h3>
+    Counter is: <%= @counter.value %>
+  </h3>
+
+  <%= button_to "Increment", increment_counter_path, class:"p-3 bg-blue-700 text-white rounded" %>
+
+<%= form_with model: @counter, url: modify_counter_path, method: :post, class:"flex gap-4" do |f| %>
+  <%= f.submit "Set Value", class:"p-3 bg-green-700 text-white rounded" %>
+
+  <%= f.number_field :value, class:"bg-gray-200 p-2 w-20" %>
+<% end %>
+
+</div>
