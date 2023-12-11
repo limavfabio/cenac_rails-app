@@ -1,6 +1,6 @@
 class CounterChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
+    stream_from "counter_channel"
   end
 
   def unsubscribed
