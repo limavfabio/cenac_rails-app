@@ -12,6 +12,10 @@ class CountersController < ApplicationController
     counter = Counter.first_or_create
     counter.increment!(:value)
 
+    ActionCable.server.broadcast("counter_channel", {
+      value: counter.value
+    })
+
     redirect_to admin_path
   end
 
