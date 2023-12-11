@@ -1,8 +1,8 @@
-import consumer from "channels/consumer"
+import consumer from "channels/consumer";
 
 consumer.subscriptions.create("CounterChannel", {
   connected() {
-    console.log("Counter Channel is Connected!")
+    console.log("Counter Channel is Connected!");
   },
 
   disconnected() {
@@ -10,6 +10,9 @@ consumer.subscriptions.create("CounterChannel", {
   },
 
   received(data) {
-    console.log("Message was received from counter_channel: ", data.value)
-  }
+    const el = document.body.querySelector("#counter-value");
+    if (el) {
+      el.innerHTML = data.value;
+    }
+  },
 });
