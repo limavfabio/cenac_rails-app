@@ -9,11 +9,10 @@ class CountersController < ApplicationController
   end
 
   def increment
-    counter = Counter.first_or_create
-    counter.increment!(:value)
+    @counter.increment!(:value)
 
     ActionCable.server.broadcast("counter_channel", {
-      value: counter.value
+      value: @counter.value
     })
 
     redirect_to admin_path
@@ -21,6 +20,10 @@ class CountersController < ApplicationController
 
   def modify
     @counter.update(counter_params)
+
+    ActionCable.server.broadcast("counter_channel", {
+      value: @counter.value
+    })
 
     redirect_to admin_path
   end

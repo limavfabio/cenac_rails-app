@@ -2,7 +2,6 @@ import consumer from "channels/consumer";
 
 consumer.subscriptions.create("CounterChannel", {
   connected() {
-    console.log("Counter Channel is Connected!");
   },
 
   disconnected() {
