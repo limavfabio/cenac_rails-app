@@ -13,12 +13,10 @@
     <%= f.number_field :value, class:"bg-gray-200 p-2 w-20" %>
   <% end %>
 
-  <!--  This is a reset_counter_button
   <%= form_with model: @counter, url: modify_counter_path, method: :post, class:"flex gap-4" do |f| %>
     <%= f.submit "Reset Counter", class:"p-3 bg-red-700 text-white rounded cursor-pointer" %>
 
     <%= f.hidden_field :value, value: 0 %>
   <% end %>
-  -->
 
 </div>
