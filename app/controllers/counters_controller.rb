@@ -1,8 +1,7 @@
 class CountersController < ApplicationController
   before_action :set_counter
 
-  def index
-  end
+  def index; end
 
   def admin
     @counter = Counter.first_or_create
@@ -11,21 +10,17 @@ class CountersController < ApplicationController
   def increment
     @counter.increment!(:value)
 
-    ActionCable.server.broadcast("counter_channel", {
-      value: @counter.value
-    })
-
-    redirect_to admin_path
+    ActionCable.server.broadcast('counter_channel', {
+                                   value: @counter.value
+                                 })
   end
 
   def modify
-    @counter.update(counter_params)
+    return unless @counter.update(counter_params)
 
-    ActionCable.server.broadcast("counter_channel", {
-      value: @counter.value
-    })
-
-    redirect_to admin_path
+    ActionCable.server.broadcast('counter_channel', {
+                                   value: @counter.value
+                                 })
   end
 
   private

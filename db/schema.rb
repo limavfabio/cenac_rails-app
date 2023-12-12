@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_07_142803) do
-  create_table "counters", force: :cascade do |t|
-    t.integer "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema[7.1].define(version: 20_231_207_142_803) do
+  create_table 'counters', force: :cascade do |t|
+    t.integer 'value'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
